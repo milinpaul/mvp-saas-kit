@@ -2,10 +2,10 @@ import React from "react";
 
 import Title from "@/co/ui/title";
 import { getCurrentUser } from "@/lib/session";
-import { siteConfig } from "@/lib/siteConfig";
+import { getSiteTitle, siteConfig } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: `Dashboard | ${siteConfig.name}`,
+  title: getSiteTitle("Dashboard"),
   description: siteConfig.description,
 };
 

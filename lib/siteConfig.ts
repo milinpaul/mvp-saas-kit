@@ -5,3 +5,11 @@ export const siteConfig = {
   description:
     "🚀 Starter kit to kick start your SaaS development and deploy fast.",
 };
+
+export const getSiteTitle = (pageName: string) => {
+  if (!pageName) {
+    return siteConfig.name;
+  }
+
+  return `${pageName} | ${siteConfig.name}`;
+};
