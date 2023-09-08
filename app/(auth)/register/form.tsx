@@ -11,9 +11,9 @@ import { Input } from "@/co/ui/input";
 import { cn } from "@/lib/utils";
 import { userRegisterSchema } from "@/lib/validations/authSchema";
 import { Icons } from "@/co/Icons";
-import { useToast } from "@/co/ui/use-toast";
 import { routes } from "@/lib/routes";
 import Link from "next/link";
+import { toastError, toastSuccess } from "@/co/ui/toast";
 
 type FormData = z.infer<typeof userRegisterSchema>;
 
@@ -27,7 +27,7 @@ export default function AuthForm() {
   } = useForm<FormData>({
     resolver: zodResolver(userRegisterSchema),
   });
-  const { toast } = useToast();
+
   const router = useRouter();
 
   async function onSubmit(data: FormData) {
@@ -51,24 +51,14 @@ export default function AuthForm() {
       setIsLoading(false);
 
       if (response.ok) {
-        toast({
-          description: `${name} successfully registered. Please login.`,
-        });
+        toastSuccess(`${name} successfully registered. Please login.`);
         return router.push(routes.dashboard);
       }
 
-      return toast({
-        title: "Something went wrong.",
-        description: "Your sign in request failed. Please try again.",
-        variant: "destructive",
-      });
+      return toastError("Your sign in request failed. Please try again.");
     } catch (error) {
       setIsLoading(false);
-      return toast({
-        title: "Something went wrong.",
-        description: "Your sign in request failed. Please try again.",
-        variant: "destructive",
-      });
+      return toastError("Your sign in request failed. Please try again.");
     }
   }
 

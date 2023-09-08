@@ -5,16 +5,16 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 import { buttonVariants } from "@/co/ui/button";
 import { Input } from "@/co/ui/input";
 import { cn } from "@/lib/utils";
 import { userLoginSchema } from "@/lib/validations/authSchema";
 import { Icons } from "@/co/Icons";
-import { useToast } from "@/co/ui/use-toast";
 import { routes } from "@/lib/routes";
-import { signIn } from "next-auth/react";
-import Link from "next/link";
+import { toastError, toastSuccess } from "@/co/ui/toast";
 
 type FormData = z.infer<typeof userLoginSchema>;
 
@@ -28,7 +28,6 @@ export default function LoginForm() {
   } = useForm<FormData>({
     resolver: zodResolver(userLoginSchema),
   });
-  const { toast } = useToast();
   const router = useRouter();
 
   async function onSubmit(data: FormData) {
@@ -45,26 +44,16 @@ export default function LoginForm() {
 
       setIsLoading(false);
 
-      if (signInUser?.error) {
-        return toast({
-          title: "Login failed!",
-          description: signInUser?.error || "",
-          variant: "destructive",
-        });
-      }
+      toastSuccess(`Welcome to SaaS Kit!`);
 
-      toast({
-        description: `Welcome to remarks.io`,
-      });
+      if (signInUser?.error) {
+        return toastError(`Error occured while signin. ${signInUser.error}`);
+      }
 
       return router.push(routes.dashboard);
     } catch (error: any) {
       setIsLoading(false);
-      return toast({
-        title: "Login failed!",
-        description: error?.error || "",
-        variant: "destructive",
-      });
+      return toastError("Error when signin..");
     }
   }
 
