@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
-import { Toaster } from "@/co/ui/toaster";
+import { Toaster } from "react-hot-toast";
 
 import { cn } from "@/lib/utils";
 import "./globals.css";
@@ -33,8 +33,8 @@ export default function RootLayout({
           fontHeading.variable
         )}
       >
-        {children}
         <Toaster />
+        {children}
         {/* <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Analytics />
           <TailwindIndicator />

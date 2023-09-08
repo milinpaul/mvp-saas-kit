@@ -3,6 +3,7 @@ import React from "react";
 import Title from "@/co/ui/title";
 import { getCurrentUser } from "@/lib/session";
 import { getSiteTitle, siteConfig } from "@/lib/siteConfig";
+import { Button } from "@/co/ui/button";
 
 export const metadata = {
   title: getSiteTitle("Dashboard"),
@@ -11,6 +12,7 @@ export const metadata = {
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
+
   return (
     <div>
       <Title>Dashboard</Title>
