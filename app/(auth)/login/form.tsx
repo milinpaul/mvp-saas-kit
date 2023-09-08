@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 
-import { buttonVariants } from "@/co/ui/button";
+import { Button, buttonVariants } from "@/co/ui/button";
 import { Input } from "@/co/ui/input";
 import { cn } from "@/lib/utils";
 import { userLoginSchema } from "@/lib/validations/authSchema";
@@ -59,6 +59,17 @@ export default function LoginForm() {
 
   return (
     <div className={cn("grid gap-6 mt-20")}>
+      <Button variant="outline">Sign in with Google</Button>
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <span className="w-full border-t" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            Or continue with email
+          </span>
+        </div>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid gap-4">
           <Input
@@ -101,16 +112,6 @@ export default function LoginForm() {
               Don&apos;t have an account? Sign Up
             </Link>
           </p>
-          {/* <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or continue with
-              </span>
-            </div>
-          </div> */}
         </div>
       </form>
     </div>

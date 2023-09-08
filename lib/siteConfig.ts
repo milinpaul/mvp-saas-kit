@@ -13,3 +13,9 @@ export const getSiteTitle = (pageName: string) => {
 
   return `${pageName} | ${siteConfig.name}`;
 };
+
+export const getEnvString = (key: string) => {
+  if (!key) return "";
+
+  return process.env[key] as string;
+};
