@@ -1,16 +1,32 @@
 import React from "react";
+import { Metadata } from "next";
 
 import Title from "@/co/ui/title";
 import { getCurrentUser } from "@/lib/session";
 
-export const metadata = {
-  title: "Dashboard | Remarks.io",
-  description: "The home for all your links.",
+type ParamProps = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+  parent: any;
 };
+
+export async function generateMetadata({
+  params,
+  parent,
+}: ParamProps): Promise<Metadata> {
+  console.log("params", parent);
+  return {
+    title: "...",
+  };
+}
+
+// export const metadata = {
+//   title: "Dashboard | MVP",
+//   description: "The home for all your links.",
+// };
 
 export default async function DashboardPage() {
   const user = await getCurrentUser();
-  console.log("user", user);
   return (
     <div>
       <Title>Dashboard</Title>
