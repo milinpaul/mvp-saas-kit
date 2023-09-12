@@ -56,17 +56,10 @@ export default function LoginForm() {
     }
   }
 
-  const handleGoogleAuthLogin = async () => {
-    const signInUser = await signIn("google", {
+  const handleGoogleAuthLogin = () =>
+    signIn("google", {
       callbackUrl: routes.dashboard,
-    });
-
-    if (signInUser?.error) {
-      return toastError(`Error occured while signin. ${signInUser.error}`);
-    }
-
-    toastSuccess(`Welcome to SaaS Kit!`);
-  };
+    }).catch((e) => console.error(e));
 
   return (
     <div className={cn("grid gap-6 mt-20")}>
