@@ -44,11 +44,10 @@ export default function LoginForm() {
 
       setIsLoading(false);
 
-      toastSuccess(`Welcome to SaaS Kit!`);
-
       if (signInUser?.error) {
         return toastError(`Error occured while signin. ${signInUser.error}`);
       }
+      toastSuccess(`Welcome to SaaS Kit!`);
 
       return router.push(routes.dashboard);
     } catch (error: any) {
@@ -57,9 +56,24 @@ export default function LoginForm() {
     }
   }
 
+  const handleGoogleAuthLogin = async () => {
+    const signInUser = await signIn("google", {
+      callbackUrl: routes.dashboard,
+    });
+
+    if (signInUser?.error) {
+      return toastError(`Error occured while signin. ${signInUser.error}`);
+    }
+
+    toastSuccess(`Welcome to SaaS Kit!`);
+  };
+
   return (
     <div className={cn("grid gap-6 mt-20")}>
-      <Button variant="outline">Sign in with Google</Button>
+      <Button variant="secondary" onClick={handleGoogleAuthLogin}>
+        <Icons.google className="mr-2 h-6 w-6" />
+        <span className="text-base">Sign in with Google</span>
+      </Button>
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <span className="w-full border-t" />

@@ -4,7 +4,7 @@ import {
   Check,
   ChevronLeft,
   ChevronRight,
-  BookmarkIcon,
+  AtomIcon,
   CreditCard,
   File,
   FileText,
@@ -29,7 +29,7 @@ import {
 export type Icon = LucideIcon;
 
 export const Icons = {
-  logo: BookmarkIcon,
+  logo: AtomIcon,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
@@ -55,10 +55,10 @@ export const Icons = {
       aria-hidden="true"
       focusable="false"
       data-prefix="fab"
-      data-icon="github"
+      data-icon="google"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 496 512"
+      viewBox="0 0 48 48"
       {...props}
     >
       <path
