@@ -66,13 +66,7 @@ export const authOptions: NextAuthOptions = {
   secret: getEnvString("NEXTAUTH_SECRET"),
   callbacks: {
     async signIn({ account, user, credentials, email, profile }) {
-      console.log("SignIn", {
-        account,
-        user,
-        credentials,
-        email,
-        profile,
-      });
+      // Sent on a successful sign in. Add signIn related events.
       return true;
     },
     async session({ token, session }) {
