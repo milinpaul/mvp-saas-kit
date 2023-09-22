@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "concurrently --kill-others \"yarn next dev\" \"yarn email\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -48,6 +48,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@types/bcrypt": "^5.0.0",
     "@types/lodash": "^4.14.196",
+    "concurrently": "^8.2.1",
     "prisma": "^5.0.0"
   }
 }
