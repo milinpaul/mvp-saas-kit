@@ -2,9 +2,10 @@ import React from "react";
 import { Icons } from "@/co/Icons";
 import Title from "@/co/ui/title";
 import LoginForm from "./form";
+import { siteConfig } from "@/lib/siteConfig";
 
 export const metadata = {
-  title: "Login to Remarks.io",
+  title: `Login to ${siteConfig.name}`,
 };
 
 export default function RegisterPage() {

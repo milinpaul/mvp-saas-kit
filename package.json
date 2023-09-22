@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email": "email dev -p 3001"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
@@ -16,6 +17,7 @@
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toast": "^1.1.4",
     "@react-email/button": "0.0.10",
+    "@react-email/components": "^0.0.7",
     "@react-email/html": "0.0.4",
     "@types/node": "20.4.5",
     "@types/react": "18.2.17",
