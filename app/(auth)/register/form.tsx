@@ -48,9 +48,8 @@ export default function AuthForm() {
         }),
       });
 
-      setIsLoading(false);
-
       if (response.ok) {
+        setIsLoading(false);
         toastSuccess(`${name} successfully registered. Please login.`);
         return router.push(routes.dashboard);
       }
